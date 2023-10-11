@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cadastro no Firebase'),
+          title: const Text('Cadastro no Firebase'),
         ),
         body: Column(
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Nome'),
+              decoration: const InputDecoration(labelText: 'Nome'),
             ),
             TextField(
               controller: emailController,
@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // Chame uma função para enviar os dados para o Firebase
                 cadastrarNoFirebase();
               },
               child: const Text('Cadastrar'),
@@ -52,13 +51,10 @@ class MyApp extends StatelessWidget {
       'nome': nome,
       'email': email,
     }).then((value) {
-      // Dados enviados com sucesso
       print('Dados enviados com sucesso');
-      // Limpe os campos de texto após o cadastro
       nameController.clear();
       emailController.clear();
     }).catchError((error) {
-      // Lida com erros de envio de dados
       print('Erro ao enviar dados: $error');
     });
   }
